@@ -33,3 +33,47 @@ This project implements a highly scalable, decoupled architecture to demonstrate
 3. Run `docker-compose up --build -d`
 4. Access the React Dashboard at `http://localhost:5173`
 5. Access the Django Admin at `http://localhost:8000/admin`
+
+---
+
+## 🔑 Integration Engine: How to get Free API Keys
+
+The DataNexus backend features a live Integration Engine that uses official Python SDKs (`boto3`, `pymongo`, `psycopg2`, `snowflake-connector-python`, etc.) to handshake with cloud providers. 
+
+To activate the "Connected" badges on your dashboard, generate these free credentials and paste them into the React UI:
+
+### 1. PostgreSQL (Neon.tech - Free)
+1. Go to [neon.tech](https://neon.tech/) and sign up.
+2. Click **New Project**, name it, and create.
+3. On your dashboard under "Connection Details", copy the **Postgres URI** (`postgresql://...`).
+
+### 2. MongoDB Atlas (Free Forever)
+1. Go to [mongodb.com/cloud/atlas/register](https://www.mongodb.com/cloud/atlas/register).
+2. Choose the **M0 Free Cluster**. Create a Database User & Password.
+3. Under **Network Access** (left menu), add IP `0.0.0.0/0` (Allow Anywhere).
+4. Click Connect -> Drivers -> copy the **Connection String** (`mongodb+srv://...`).
+
+### 3. Snowflake (30-Day Free Trial - No Credit Card Required)
+1. Go to [signup.snowflake.com](https://signup.snowflake.com/).
+2. Fill out the form, pick AWS as the cloud provider.
+3. Check your email, activate the account, and create a Username/Password.
+4. Log into Snowflake. Look at the bottom-left corner and click your account name to get your **Account Identifier** (e.g., `xy12345.us-east-1`).
+
+### 4. Apache Kafka (Confluent Cloud - Free Trial)
+1. Go to [confluent.io/confluent-cloud](https://www.confluent.io/confluent-cloud/tryfree/).
+2. Create a "Basic" cluster (free).
+3. Go to Cluster Settings to copy your **Bootstrap server** URL.
+4. Go to **API Keys** -> Create Key (Global Access). Copy the **API Key** and **Secret**.
+
+### 5. AWS S3 (Free Tier - Requires Credit Card Verification)
+1. Go to [aws.amazon.com/free](https://aws.amazon.com/free) and create an account. *(Note: AWS requires a credit card for identity verification, but S3 is free under 5GB).*
+2. Go to the **IAM Console** -> Users -> Create User.
+3. Attach the `AmazonS3FullAccess` policy.
+4. Click your new user -> Security Credentials -> Create Access Key. Copy the **Access Key ID** and **Secret Access Key**.
+
+### 6. Salesforce (Free Developer Edition)
+1. Go to [developer.salesforce.com/signup](https://developer.salesforce.com/signup) and create an account.
+2. In Salesforce, click the ⚙️ Gear icon -> Setup -> **App Manager**.
+3. Click **New Connected App**. Check "Enable OAuth Settings".
+4. Set callback URL to `http://localhost:5173`. Add the "Manage user data via APIs" scope.
+5. Save and click "Manage Consumer Details" to get your **Client ID** and **Client Secret**.
