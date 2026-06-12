@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: data_nexus
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+
+  django:
+    build: ./django_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./django_backend:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - DB_HOST=postgres
+      - DB_NAME=data_nexus
+      - DB_USER=admin
+      - DB_PASSWORD=password
+      - DB_PORT=5432
+    depends_on:
+      - postgres
+
+  node:
+    build: ./node_service
+    command: npm run dev
+    volumes:
+      - ./node_service:/app
+      - /app/node_modules
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - MONGO_URI=mongodb://mongo:27017/data_nexus
+    depends_on:
+      - mongo
+
+volumes:
+  pgdata:
+  mongodata:
