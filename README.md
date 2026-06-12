@@ -6,9 +6,9 @@ It acts as a centralized command center to orchestrate ELT pipelines, monitor re
 
 ![Dashboard Preview](dashboard.png)
 
-## 🌟 Unique Selling Propositions
+## 🌟 Key Architectural Highlights
 
-Most portfolio projects are simple CRUD apps with a static database. DataNexus is a complete, decoupled cloud data ecosystem:
+DataNexus is a complete, decoupled cloud data ecosystem:
 
 - **Live Microservice Event Streaming:** Instead of basic HTTP polling, this project uses a high-throughput Node.js microservice connected to MongoDB that listens for webhook payloads and pushes live terminal logs directly to the React frontend using Server-Sent Events (SSE).
 - **Enterprise Integration Engine:** Features a secure Django API that uses official Python SDKs (`boto3`, `snowflake-connector-python`, `psycopg2`) to perform live TCP/SSL handshakes with cloud providers. It doesn't just mock connections—it actually pings AWS and Snowflake in real-time.
