@@ -6,7 +6,7 @@ It acts as a centralized command center to orchestrate ELT pipelines, monitor re
 
 ![Dashboard Preview](dashboard.png)
 
-## 🌟 Unique Selling Propositions (What makes this Top 1%)
+## 🌟 Unique Selling Propositions
 
 Most portfolio projects are simple CRUD apps with a static database. DataNexus is a complete, decoupled cloud data ecosystem:
 
