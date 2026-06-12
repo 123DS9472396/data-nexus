@@ -1,4 +1,4 @@
-# DataNexus: Top 1% Enterprise Data Operations Platform 🚀
+# DataNexus: Enterprise Data Operations Platform 🚀
 
 DataNexus is an enterprise-grade, microservice-based Data Operations Platform and a complete demonstration of modern full-stack data architecture (React → Django REST → PostgreSQL → Node.js Event Streamer → MongoDB). 
 
