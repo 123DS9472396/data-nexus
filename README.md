@@ -84,11 +84,44 @@ For testing and development, you can run the entire microservice ecosystem local
    - **React Dashboard:** `http://localhost:5173`
    - **Django API/Admin:** `http://localhost:8000/admin`
 
-### Option B: Cloud Deployment (Vercel + Render)
-To prove you understand cloud deployment, you can host these services for free.
-1. **Frontend:** Push your code to GitHub and import the repository into **Vercel**. Set the framework to Vite and add the environment variable `VITE_DJANGO_URL=https://your-django-url.onrender.com`.
-2. **Backend:** Deploy the `django_backend` folder to **Render.com** as a Web Service. Attach a free Render PostgreSQL database.
-3. **Microservice:** Deploy the `node_service` folder to **Render.com**. Attach a free MongoDB Atlas URI to the environment variables.
+### Option B: Cloud Deployment (Free via Vercel & Render)
+To prove to recruiters that you understand cloud CI/CD, you can host these services completely for free.
+
+**1. Backend API (Render.com)**
+1. Push this repository to your GitHub account.
+2. Go to [Render.com](https://render.com/) and click **New +** -> **Web Service**.
+3. Connect your GitHub account and select your `data-nexus` repository.
+4. Configure the Web Service:
+   - **Root Directory:** `django_backend`
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `gunicorn core.wsgi:application --bind 0.0.0.0:$PORT`
+   - **Instance Type:** Free
+5. Expand **Advanced** and add the following Environment Variables:
+   - `DEBUG`: `False`
+   - `ALLOWED_HOSTS`: `*`
+6. Click **Create Web Service**. Wait 3-5 minutes, then copy your new `https://...onrender.com` URL!
+
+**2. Node.js Event Streamer (Render.com)**
+1. In Render, click **New +** -> **Web Service** again and select your `data-nexus` repository.
+2. Configure the Web Service:
+   - **Root Directory:** `node_service`
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+3. Expand **Advanced** and add your MongoDB variable:
+   - `MONGODB_URI`: *(Paste your free MongoDB Atlas connection string here)*
+   - `CORS_ORIGIN`: `*`
+4. Click **Create Web Service**. Copy this second Render URL!
+
+**3. Frontend Dashboard (Vercel.com)**
+1. Go to [Vercel.com](https://vercel.com/) and sign in with GitHub.
+2. Click **Add New Project** and import the `data-nexus` repository.
+3. Configure the Project:
+   - **Framework Preset:** Vite
+   - **Root Directory:** `frontend`
+4. Open the **Environment Variables** section and link your APIs:
+   - `VITE_DJANGO_URL`: *(Paste your Django Render URL here)*
+   - `VITE_NODE_URL`: *(Paste your Node.js Render URL here)*
+5. Click **Deploy**. In under 2 minutes, your full-stack enterprise dashboard will be live globally!
 
 ---
 
