@@ -5,7 +5,6 @@ DataNexus is an enterprise-grade, microservice-based Data Operations Platform an
 It acts as a centralized command center to orchestrate ELT pipelines, monitor real-time data flow via Server-Sent Events (SSE), catalog datasets, and securely manage API connections with live cloud data warehouses like Snowflake, AWS S3, and Apache Kafka.
 
 ![Dashboard Preview](dashboard.png)
-*(Note: Please take a screenshot of your dashboard and save it in this folder as `dashboard.png` to display it here!)*
 
 ## 🌟 Unique Selling Propositions (What makes this Top 1%)
 
